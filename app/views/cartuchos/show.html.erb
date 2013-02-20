@@ -1,0 +1,69 @@
+
+<p>
+  <b>Codigo:</b>
+  <%= @cartucho.codigo %>
+</p>
+
+<p>
+  <b>Referencia:</b>
+  <%= @cartucho.referencia %>
+</p>
+
+<p>
+  <b>Fecha ing:</b>
+  <%= @cartucho.fecha_ing %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @cartucho.estado %>
+</p>
+
+
+<%= link_to 'Editar', edit_cartucho_path(@cartucho) %> |
+<%= link_to 'Atras', cartuchos_path %>
+
+
+<h3>Historiales	</h3>
+
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Fecha fabricacion</th>
+    <th>Fecha venta</th>
+    <th>Fecha devolucion</th>
+    <th>Empresa</th>
+    <th>Motivo</th>
+    <th>Cantidad toner</th>
+    <th>Mag roller</th>
+    <th>Drum</th>
+    <th>Observaciones</th>
+    <th></th>
+
+  </tr>
+
+<% @historials.each do |historial| %>
+  <tr>
+    <td><%= historial.fecha_fabricacion %></td>
+    <td><%= historial.fecha_venta %></td>
+    <td><%= historial.fecha_devolucion %></td>
+    <td><%= historial.empresa %></td>
+    <td><%= historial.motivo %></td>
+    <td><%= historial.cantidad_toner %></td>
+    <td><%= historial.mag_roller %></td>
+    <td><%= historial.drum %></td>
+    <td><%= historial.observaciones %></td>
+    
+    <td>
+      <div class="btn-group">
+
+      <%= link_to 'Editar', edit_cartucho_historial_path(@cartucho, historial), :class =>"btn btn-mini"  %>
+    <%= link_to 'Borrar', cartucho_historial_path(@cartucho, historial), method: :delete, data: { confirm: 'Estas Seguro?' }, :class =>"btn btn-mini btn-danger" %>
+    </div>
+  </td>
+
+    
+  </tr>
+<% end %>
+</table>
+
+<%= render "cartuchos/form_historial" %>

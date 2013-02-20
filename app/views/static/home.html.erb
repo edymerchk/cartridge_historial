@@ -1,0 +1,19 @@
+
+
+
+
+<div class="landing">
+<h3>Historial de Remanufactura</h3>
+
+<%= form_tag(:controller => "cartuchos", :action => "search", :method => "get") do  %>
+
+<%= text_field(:cartucho, :codigo, :required => true, :size => 20)%>
+ <div class="btn-group">
+<%= submit_tag "Buscar", :class => "form_submit", class: "btn btn-large btn btn-info" %>
+<%= link_to "Crear", new_cartucho_path, class: "btn btn-large btn-success" %>
+</div>
+
+<% end %>
+
+
+</div>

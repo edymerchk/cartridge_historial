@@ -1,0 +1,39 @@
+<%= form_for(@cartucho) do |f| %>
+  <% if @cartucho.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cartucho.errors.count, "error") %> prohibited this cartucho from being saved:</h2>
+
+      <ul>
+      <% @cartucho.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codigo %>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :referencia %>
+    <%= f.text_field :referencia %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_ing %>
+    <%= f.text_field :fecha_ing, :class => "datepicker" %>
+  </div>
+  <div class="field">
+
+    <div class="field">
+    <label for="theme">Estado:</label>
+    <% [ 'Original', 'Remanufacturado', 'Recargado'].each do |status| %>
+      <%= radio_button_tag 'cartucho[estado]', status, @status == status %>      
+      <%=status.humanize %>
+    <% end %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit "Crear Cartucho" %>
+  </div>
+<% end %>

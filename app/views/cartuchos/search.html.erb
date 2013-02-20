@@ -1,0 +1,8 @@
+<h1>Search Cartucho</h1>
+
+<%= form_tag("cartuchos#search", :method => "GET") do  %>
+
+<%= text_field(:cartucho, :codigo, :size => 20)%>
+
+<%= submit_tag "Buscar"%>
+<% end %>

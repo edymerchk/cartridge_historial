@@ -1,0 +1,78 @@
+
+
+<div class="row">
+  <div class="span3 well">
+    <%= form_for([@cartucho, @historial]) do |f| %>
+    <% if @historial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@historial.errors.count, "error") %> prohibited this historial from being saved:</h2>
+
+      <ul>
+        <% @historial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <input name="cartucho_id" type="hidden" value="#{@cartucho.id}" />
+    <div class="field">
+      <%= f.label :fecha_fabricacion%>
+      <%= f.text_field :fecha_fabricacion, :class => "datepicker"  %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_venta %>
+      <%= f.text_field :fecha_venta, :class => "datepicker"  %>
+    </div>
+    <div class="field">
+      <%= f.label :fecha_devolucion %>
+      <%= f.text_field :fecha_devolucion, :class => "datepicker"  %>
+    </div>
+    <div class="field">
+      <%= f.label :empresa %>
+      <%= f.text_field :empresa %>
+    </div>
+  </div>
+  <div class="span4 well">
+    <div class="field">
+      <label for="theme">Motivo:</label>
+      <% [ 'Garantia', 'Remanufactura'].each do |motivo| %>
+      <%= radio_button_tag 'historial[motivo]', motivo, @historial.motivo == motivo  %>
+      <%=motivo.humanize %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cantidad_toner %>
+      <%= f.text_field :cantidad_toner %>
+    </div>
+
+
+    <div class="field">
+      <label for="theme">Mag Roller:</label>
+      <% [ 'Original', 'Nuevo', 'Lijado'].each do |mag_roller| %>
+      <%= radio_button_tag 'historial[mag_roller]', mag_roller, @historial.mag_roller == mag_roller %>
+      <%= mag_roller.humanize %>
+      <% end %>
+    </div>
+
+
+    <div class="field">
+      <label for="theme">Drum:</label>
+      <% [ 'Nuevo', 'Usado'].each do |drum| %>
+      <%= radio_button_tag 'historial[drum]', drum, @historial.drum == drum %>
+      <%=drum.humanize %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span3 well">
+    <div class="field">
+      <%= f.label :observaciones %>
+      <%= f.text_area :observaciones, :size => "5x2" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Crear Historial" %>
+    </div>
+  </div>
+  <% end %>
+
+</div>

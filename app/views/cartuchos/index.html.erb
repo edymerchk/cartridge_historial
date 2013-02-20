@@ -1,0 +1,28 @@
+<h1>Mostrando cartuchos</h1>
+
+<table class="table table-bordered table-hover">
+  <tr>
+    <th>Codigo</th>
+    <th>Referencia</th>
+    <th>Fecha ing</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+
+  </tr>
+
+<% @cartuchos.each do |cartucho| %>
+  <tr>
+    <td><%= cartucho.codigo %></td>
+    <td><%= cartucho.referencia %></td>
+    <td><%= cartucho.fecha_ing %></td>
+    <td><%= cartucho.estado %></td>
+    <td><%= link_to 'Mostrar', cartucho %>
+    <%= link_to 'Editar', edit_cartucho_path(cartucho) %>
+    <%= link_to 'Borrar', cartucho, method: :delete, data: { confirm: 'Estas Seguro?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Cartucho', new_cartucho_path %>
